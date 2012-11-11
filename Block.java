@@ -1,3 +1,7 @@
+/**
+ * @author Oliver Manheim
+ */
+
 import java.awt.*;
 
 public class Block {

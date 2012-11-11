@@ -1,23 +1,33 @@
+/**
+ * 
+ * @author Oliver Manheim
+ * omanheim@sas.upenn.edu
+ * 
+ * This is a fully-functional Tetris game.
+ * It should be run from this class. 
+ * Instructions to the game are found
+ * in the application itself.
+ *
+ */
+
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
-@SuppressWarnings("serial")
-public class Game extends JPanel {
+public class Game {
 
 	public Game() {
 		
 		// Top-level frame
-		//final JFrame frame = new JFrame("Tetris");
-		//frame.setLocation(200, 200);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
-		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		final JFrame frame = new JFrame("Tetris");
+		frame.setLocation(200, 200);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
 
 		// Side panel
 		final JPanel sidePanel = new JPanel();
 		sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
-		sidePanel.setSize(new Dimension(200,400));
 
 		// Next block frame
 		final PreviewFrame preview = new PreviewFrame();
@@ -42,7 +52,6 @@ public class Game extends JPanel {
 		// Main playing area
 		final TetrisCourt court = new 
 				TetrisCourt(level, lines, score, preview, instructions);
-		court.setSize(new Dimension(200,400));
 		
 		// Add shadow option
 		final ButtonGroup shadowGroup = new ButtonGroup();
@@ -101,16 +110,16 @@ public class Game extends JPanel {
 		instructButton.add(instruct);
 		sidePanel.add(instructButton);
 
-		add(court);
-		add(sidePanel);
+		frame.add(court);
+		frame.add(sidePanel);
 		
 
 		// Put the frame on the screen
-		//this.setVisible(true);
+		frame.pack();
+		frame.setVisible(true);
 		// Start the game running
-		court.grabFocus();
+		court.reset();
 	}
-
 
 	/*
 	 * Rather than directly building the top level frame object in the main
@@ -120,13 +129,12 @@ public class Game extends JPanel {
 	 * that this will cause the new object to be created by a different
 	 * "thread".)
 	 */
-	 /*public static void main(String[] args) {
+	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new Game();
 			}
 		});
-	}*/
+	}
+
 }
-
-

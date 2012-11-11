@@ -1,3 +1,7 @@
+/**
+ * @author Oliver Manheim
+ */
+
 import java.awt.*;
 import java.util.Random;
 
@@ -17,7 +21,6 @@ public class PreviewFrame extends JPanel {
 		setBorder(BorderFactory.createTitledBorder("Next Piece"));
 		setBackground(Color.GRAY);
 		setFocusable(true);
-		tTet();
 	}
 
 	// Generates a random tetromino

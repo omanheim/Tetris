@@ -1,0 +1,6 @@
+This implementation of the game Tetris was designed and completed by Oliver Manheim.
+
+TO RUN:
+
+Compile all java files: javac *.java
+Run from Game.java file: java Game 

@@ -1,3 +1,7 @@
+/**
+ * @author Oliver Manheim
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
@@ -124,18 +128,11 @@ public class TetrisCourt extends JPanel {
 		
 		isShadowOn = true;
 		lock = false;
-		System.out.println("a");
-		thisTet = randomTet();
-		t = setTet(thisTet);
-		next = "s";
-		shadow = setTet(thisTet);
 	}
 
 	// Resets the game
 	public void reset() {
-		System.out.println("b");
-		if (!blocks.isEmpty())
-			blocks.clear();
+		blocks.clear();
 		thisTet = randomTet();
 		t = setTet(thisTet);
 		shadow = setTet(thisTet);
@@ -168,7 +165,7 @@ public class TetrisCourt extends JPanel {
 			return;
 		}
 		thisTet = next;
-		t = setTet(thisTet);
+		t = setTet(next);
 		shadow = setTet(next);
 		shadow.setX(t.getX());
 		shadowAct();
@@ -228,7 +225,6 @@ public class TetrisCourt extends JPanel {
 
 	// If the active tetr. can move, it moves; otherwise, the next one starts
 	void tick() {
-		grabFocus();
 		try {
 			if (t.canMoveY(blocks.keySet())) {
 				t.moveY();
@@ -341,37 +337,37 @@ public class TetrisCourt extends JPanel {
 	
 	// Creates an 'O' shaped tetr.
 	public Tetromino oTet() {
-		return new oTet(200, 400);
+		return new oTet(getWidth(), getHeight());
 	}
 
 	// Creates a 'J' shaped tetr.
 	public Tetromino jTet() {
-		return new jTet(200, 400);
+		return new jTet(getWidth(), getHeight());
 	}
 
 	// Creates an 'L' shaped tetr.
 	public Tetromino lTet() {
-		return new lTet(200, 400);
+		return new lTet(getWidth(), getHeight());
 	}
 
 	// Creates an 'I' shaped tetr.
 	public Tetromino iTet() {
-		return new iTet(200, 400);
+		return new iTet(getWidth(), getHeight());
 	}
 
 	// Creates a 'T' shaped tetr.
 	public Tetromino tTet() {
-		return new tTet(200, 400);
+		return new tTet(getWidth(), getHeight());
 	}
 
 	// Creates a 'Z' shaped tetr.
 	public Tetromino zTet() {
-		return new zTet(200, 400);
+		return new zTet(getWidth(), getHeight());
 	}
 
 	// Creates an 'S' shaped tetr.
 	public Tetromino sTet() {
-		return new sTet(200, 400);
+		return new sTet(getWidth(), getHeight());
 	}
 
 	public void paintComponent(Graphics g) {
